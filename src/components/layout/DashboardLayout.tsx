@@ -48,7 +48,7 @@ export function DashboardLayout() {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Mobile sidebar */}
-      <div className={`fixed inset-0 z-50 ${sidebarOpen ? 'block' : 'hidden'}`}>
+      <div className={`fixed inset-0 z-50 lg:hidden ${sidebarOpen ? 'block' : 'hidden'}`}>
         <div className="fixed inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
         <div className="fixed inset-y-0 left-0 w-64 bg-gray-800 border-r border-gray-700">
           <div className="flex items-center justify-between p-4 border-b border-gray-700">
