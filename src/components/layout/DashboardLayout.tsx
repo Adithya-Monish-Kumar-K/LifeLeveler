@@ -80,31 +80,31 @@ export function DashboardLayout() {
         </div>
       </div>
 
-      + {/* Permanent sidebar, never closes */}
-+ <div className="fixed inset-y-0 left-0 w-64 bg-gray-800 border-r border-gray-700 z-50">
-+   <div className="p-4 border-b border-gray-700">
-+     <h2 className="text-xl font-bold text-yellow-500">LifeLeveler</h2>
-+   </div>
-+   <nav className="mt-4">
-+     {navigation.map((item) => {
-+       const isActive = location.pathname === item.href;
-+       return (
-+         <Link
-+           key={item.href}
-+           to={item.href}
-+           className={`flex items-center px-4 py-3 text-sm transition-colors ${
-+             isActive
-+               ? 'bg-yellow-500/10 text-yellow-500 border-r-2 border-yellow-500'
-+               : 'text-gray-300 hover:text-white hover:bg-gray-700'
-+           }`}
-+         >
-+           <item.icon className="w-5 h-5 mr-3" />
-+           {item.name}
-+         </Link>
-+       );
-+     })}
-+   </nav>
-+ </div>
+       {/* Permanent sidebar, never closes */}
+ <div className="fixed inset-y-0 left-0 w-64 bg-gray-800 border-r border-gray-700 z-50">
+   <div className="p-4 border-b border-gray-700">
+     <h2 className="text-xl font-bold text-yellow-500">LifeLeveler</h2>
+   </div>
+   <nav className="mt-4">
+     {navigation.map((item) => {
+       const isActive = location.pathname === item.href;
+       return (
+         <Link
+           key={item.href}
+           to={item.href}
+           className={`flex items-center px-4 py-3 text-sm transition-colors ${
+             isActive
+               ? 'bg-yellow-500/10 text-yellow-500 border-r-2 border-yellow-500'
+               : 'text-gray-300 hover:text-white hover:bg-gray-700'
+           }`}
+         >
+           <item.icon className="w-5 h-5 mr-3" />
+           {item.name}
+         </Link>
+       );
+     })}
+   </nav>
+ </div>
 
       {/* Main content */}
       <div className="flex flex-col lg:pl-64">
