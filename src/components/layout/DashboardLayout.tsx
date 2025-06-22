@@ -81,7 +81,7 @@ export function DashboardLayout() {
       </div>
 
        {/* Permanent sidebar, never closes */}
- <div className="fixed inset-y-0 left-0 w-64 bg-gray-800 border-r border-gray-700 z-50">
+ <div className="hidden lg:fixed inset-y-0 left-0 w-64 bg-gray-800 border-r border-gray-700 z-50">
    <div className="p-4 border-b border-gray-700">
      <h2 className="text-xl font-bold text-yellow-500">LifeLeveler</h2>
    </div>
