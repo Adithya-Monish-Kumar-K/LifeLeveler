@@ -81,7 +81,7 @@ export function DashboardLayout() {
       </div>
 
        {/* Permanent sidebar, never closes */}
- <div className="hidden lg:fixed inset-y-0 left-0 w-64 bg-gray-800 border-r border-gray-700 z-50">
+ <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:flex-col lg:w-64 lg:bg-gray-800 lg:border-r lg:border-gray-700 lg:z-50">
    <div className="p-4 border-b border-gray-700">
      <h2 className="text-xl font-bold text-yellow-500">LifeLeveler</h2>
    </div>
@@ -115,7 +115,7 @@ export function DashboardLayout() {
               <Button
                 variant="outline"
                 size="sm"
-                className="mr-3"
+                className="lg:hidden mr-3"
                 onClick={() => setSidebarOpen(true)}
               >
                 <Menu className="w-4 h-4" />
