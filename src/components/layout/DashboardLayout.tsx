@@ -80,34 +80,6 @@ export function DashboardLayout() {
         </div>
       </div>
 
-      {/* Desktop sidebar */}
-      <div className="hidden lg:flex  lg:flex-shrink-0">
-        <div className="flex flex-col w-64 bg-gray-800 border-r border-gray-700">
-          <div className="p-4 border-b border-gray-700">
-            <h2 className="text-xl font-bold text-yellow-500">LifeLeveler</h2>
-          </div>
-          <nav className="flex-1 mt-4">
-            {navigation.map((item) => {
-              const isActive = location.pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  className={`flex items-center px-4 py-3 text-sm transition-colors ${
-                    isActive
-                      ? 'bg-yellow-500/10 text-yellow-500 border-r-2 border-yellow-500'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-700'
-                  }`}
-                >
-                  <item.icon className="w-5 h-5 mr-3" />
-                  {item.name}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-      </div>
-
       {/* Main content */}
       <div className="flex flex-col lg:pl-64">
         {/* Top bar */}
