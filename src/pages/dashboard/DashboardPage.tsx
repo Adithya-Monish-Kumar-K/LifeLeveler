@@ -58,7 +58,7 @@ export function DashboardPage() {
             </div>
           </div>
           
-          <div className="flex-1 text-center lg:text-left w-full">
+          <div className="flex-1 text-center lg:text-center w-full">
             <h1 className="text-2xl lg:text-3xl font-bold text-white mb-1">{profile.name}</h1>
             {activeTitle && (
               <p className="text-xl lg:text-2xl text-purple-600 font-bold mb-4">
