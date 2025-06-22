@@ -117,7 +117,7 @@ export function DashboardLayout() {
               <Button
                 variant="outline"
                 size="sm"
-                className="lg:hidden mr-3"
+                className="mr-3"
                 onClick={() => setSidebarOpen(true)}
               >
                 <Menu className="w-4 h-4" />
