@@ -81,8 +81,7 @@ export function DashboardLayout() {
       </div>
 
       {/* Desktop sidebar */}
-      {sidebarOpen && (
-     <div className="flex flex-shrink-0">
+      <div className="hidden lg:flex  lg:flex-shrink-0">
         <div className="flex flex-col w-64 bg-gray-800 border-r border-gray-700">
           <div className="p-4 border-b border-gray-700">
             <h2 className="text-xl font-bold text-yellow-500">LifeLeveler</h2>
@@ -107,7 +106,7 @@ export function DashboardLayout() {
             })}
           </nav>
         </div>
-      </div>)}
+      </div>
 
       {/* Main content */}
       <div className="flex flex-col lg:pl-64">
