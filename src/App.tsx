@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // Auth stores
 import { useAuthStore } from './store/authStore';
-import { useCapacitor } from './hooks/useCapacitor';
 
 // Auth pages
 import { SignInPage } from './pages/auth/SignInPage';
@@ -14,7 +13,6 @@ import { ForgotPasswordPage } from './pages/auth/ForgotPasswordPage';
 
 // Dashboard layout and pages
 import { DashboardLayout } from './components/layout/DashboardLayout';
-import { MobileDashboardLayout } from './components/layout/MobileDashboardLayout';
 import { DashboardPage } from './pages/dashboard/DashboardPage';
 import { QuestsPage } from './pages/quests/QuestsPage';
 import { NewQuestPage } from './pages/quests/NewQuestPage';
@@ -24,7 +22,6 @@ import { TitlesPage } from './pages/titles/TitlesPage';
 
 function App() {
   const { initialize, loading } = useAuthStore();
-  const { isNative, platform } = useCapacitor();
 
   useEffect(() => {
     initialize();
@@ -38,9 +35,6 @@ function App() {
     );
   }
 
-  // Choose layout based on screen size and platform
-  const LayoutComponent = window.innerWidth < 1024 || isNative ? MobileDashboardLayout : DashboardLayout;
-
   return (
     <Router>
       <div className="min-h-screen bg-gray-900">
@@ -52,7 +46,7 @@ function App() {
           <Route path="/forgot" element={<ForgotPasswordPage />} />
 
           {/* Protected routes */}
-          <Route path="/app" element={<LayoutComponent />}>
+          <Route path="/app" element={<DashboardLayout />}>
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="quests" element={<QuestsPage />} />
             <Route path="quests/new" element={<NewQuestPage />} />
