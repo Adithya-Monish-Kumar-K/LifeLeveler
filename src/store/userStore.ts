@@ -731,7 +731,7 @@ export const useUserStore = create<UserState>((set, get) => ({
     set({ levelUpNotification: { show: false, oldLevel: 0, newLevel: 0, bonusPointsAwarded: 0 } });
   },
   },
-  //Update only the username
+                                                             
   updateUsername: async (newName: string) => {
   const { profile } = get();
   if (!profile) return;
