@@ -54,7 +54,7 @@ interface UserState {
   setActiveTitle: (titleId: string | undefined) => Promise<void>;
   
   // UI actions
-  showLevelUp: (oldLevel: number, newLevel: number, bonusPoints: number, hasBeenShownFor: number) => void;
+  showLevelUp: (oldLevel: number, newLevel: number, bonusPoints: number) => void;
   hideLevelUp: () => void;
 }
 
