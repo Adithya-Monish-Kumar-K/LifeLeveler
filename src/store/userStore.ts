@@ -726,5 +726,5 @@ export const useUserStore = create<UserState>((set, get) => ({
   showLevelUp: (oldLevel: number, newLevel: number, bonusPoints: number) => {
     set({ levelUpNotification: { show: true, oldLevel, newLevel, bonusPointsAwarded: bonusPoints } });
   },
-
+  
 }));
