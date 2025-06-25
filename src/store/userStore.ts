@@ -732,7 +732,7 @@ export const useUserStore = create<UserState>((set, get) => ({
   },
   },
   //Update only the username
-updateUsername: async (newName: string) => {
+  updateUsername: async (newName: string) => {
   const { profile } = get();
   if (!profile) return;
   // call your generic updater
