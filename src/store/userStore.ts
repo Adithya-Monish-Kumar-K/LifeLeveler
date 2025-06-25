@@ -725,23 +725,4 @@ export const useUserStore = create<UserState>((set, get) => ({
 
   showLevelUp: (oldLevel: number, newLevel: number, bonusPoints: number) => {
     set({ levelUpNotification: { show: true, oldLevel, newLevel, bonusPointsAwarded: bonusPoints } });
-  },
-
-  hideLevelUp: () => {
-    set({ levelUpNotification: { show: false, oldLevel: 0, newLevel: 0, bonusPointsAwarded: 0 } });
-  },
-  })
-                                                             
-  updateUsername: async (newName: string) => {
-  const { profile } = get();
-  if (!profile) return;
-  // call your generic updater
-  await get().updateProfile({ name: newName });
-  },
-  
-  //Update only the email
-updateEmail: async (newEmail: string) => {
-  const { profile } = get();
-  if (!profile) return;
-  await get().updateProfile({ email: newEmail });
 }));
