@@ -68,7 +68,7 @@ export const useUserStore = create<UserState>((set, get) => ({
   titleChains: [],
   titles: [],
   loading: false,
-  levelUpNotification: { show: false, oldLevel: 0, newLevel: 0, bonusPointsAwarded: 0 },
+  levelUpNotification: { show: false, oldLevel: 0, newLevel: 0, bonusPointsAwarded: 0, hasBeenShownFor: 0,  },
 
   loadProfile: async (userId: string) => {
     set({ loading: true });
