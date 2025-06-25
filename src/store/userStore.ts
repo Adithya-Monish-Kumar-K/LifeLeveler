@@ -722,6 +722,13 @@ export const useUserStore = create<UserState>((set, get) => ({
   },
 
   showLevelUp: (oldLevel: number, newLevel: number, bonusPoints: number) => {
+    const { profile, updateProfile } = get();
+  if (!profile) return;
+
+  // Add bonus points now
+  updateProfile({
+    bonusStatPoints: profile.bonusStatPoints + bonusPoints,
+  });
     set({ levelUpNotification: { show: true, oldLevel, newLevel, bonusPointsAwarded: bonusPoints } });
   },
 
