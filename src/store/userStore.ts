@@ -68,7 +68,7 @@ export const useUserStore = create<UserState>((set, get) => ({
   titleChains: [],
   titles: [],
   loading: false,
-  levelUpNotification: { show: false, oldLevel: 0, newLevel: 0, bonusPointsAwarded: 0, hasBeenShownFor: 0,  },
+  levelUpNotification: { show: false, oldLevel: 0, newLevel: 0, bonusPointsAwarded: 0 },
 
   loadProfile: async (userId: string) => {
     set({ loading: true });
@@ -725,22 +725,8 @@ export const useUserStore = create<UserState>((set, get) => ({
     await get().updateProfile({ activeTitleId: titleId });
   },
 
-  showLevelUp: (oldLevel, newLevel, bonusPointsAwarded) => {
-    set(state => {
-      // if we already showed for this newLevel, do nothing
-      if (state.levelUpNotification.hasBeenShownFor === newLevel) {
-        return {};
-      }
-      return {
-        levelUpNotification: {
-          show: true,
-          oldLevel,
-          newLevel,
-          bonusPointsAwarded,
-          hasBeenShownFor: newLevel,   // mark it shown
-        },
-      };
-    });
+  showLevelUp: (oldLevel: number, newLevel: number, bonusPoints: number) => {
+    set({ levelUpNotification: { show: true, oldLevel, newLevel, bonusPointsAwarded: bonusPoints } });
   },
 
     hideLevelUp: () =>
