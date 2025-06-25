@@ -364,7 +364,7 @@ export const useUserStore = create<UserState>((set, get) => ({
     
     // Show level up notification if leveled up
     if (newLevel > oldLevel) {
-      get().showLevelUp(oldLevel, newLevel, bonusPointsAwarded);
+      get().(oldLevel, newLevel, bonusPointsAwarded);
     }
   },
 
@@ -728,6 +728,15 @@ export const useUserStore = create<UserState>((set, get) => ({
   showLevelUp: (oldLevel: number, newLevel: number, bonusPoints: number) => {
     set({ levelUpNotification: { show: true, oldLevel, newLevel, bonusPointsAwarded: bonusPoints } });
   },
+
+  hideLevelUp: () =>
+    set(state => ({
+      levelUpNotification: {
+        ...state.levelUpNotification,
+        show: false,
+      },
+    })),
+  
   updateUsername: async (newName: string) => {
   const { profile } = get();
   if (!profile) return;
