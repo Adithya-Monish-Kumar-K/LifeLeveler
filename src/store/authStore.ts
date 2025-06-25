@@ -87,4 +87,20 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       set({ user: session?.user ?? null });
     });
   },
+
+  updateEmail: async (newEmail: string): Promise<void> => {
+  const { profile } = get();
+  if (!profile) return;
+
+  // 1) Update Auth email so login works with the new address
+  const { error: authError } = await supabase.auth.updateUser({ email: newEmail });
+  if (authError) {
+    console.error('Error updating Supabase Auth email:', authError);
+    return;
+  }
+
+  // 2) Update your profile table
+  await get().updateProfile({ email: newEmail });
+},
+
 }));
