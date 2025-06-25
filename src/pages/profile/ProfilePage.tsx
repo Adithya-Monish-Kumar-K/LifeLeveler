@@ -73,7 +73,7 @@ export function ProfilePage() {
 
         {/* Reset Character */}
         <div className="pt-4 border-t border-gray-600">
-          <Button size="sm" variant="default" onClick={() => setShowResetConfirm(true)}>
+          <Button size="sm" onClick={() => setShowResetConfirm(true)}>
             Reset Character
           </Button>
         </div>
