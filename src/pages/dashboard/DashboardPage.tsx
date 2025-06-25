@@ -10,7 +10,7 @@ import { Button } from '../../components/ui/Button';
 import { ProgressBar } from '../../components/ui/ProgressBar';
 import { StatCard } from '../../components/ui/StatCard';
 import { getEXPProgress } from '../../utils/levelUtils';
-import logo from '../../assets/logotext_poweredby_360w.png';
+import logo from '../../components/logotext_poweredby_360w.png';
 
 const statIcons = {
   strength: { icon: Sword, color: 'bg-red-500/20 text-red-400' },
