@@ -53,7 +53,7 @@ function App() {
             <Route path="skills" element={<SkillsPage />} />
             <Route path="achievements" element={<AchievementsPage />} />
             <Route path="titles" element={<TitlesPage />} />
-            <Route path="profile" element={<div className="text-white">Profile page coming soon...</div>} />
+            <Route path="profile" element={<ProfilePage />} />
           </Route>
 
           {/* Catch all */}
