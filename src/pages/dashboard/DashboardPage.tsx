@@ -102,6 +102,23 @@ export function DashboardPage() {
         </div>
       </Card>
 
+{/* Bolt Logo */}
+<div className="flex justify-center my-6">
+  <a
+    href="https://bolt.new/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Go to bolt.new"
+  >
+    <img
+      src={logo}
+      alt="Bolt.new Logo"
+      className="h-12 lg:h-16"
+    />
+  </a>
+</div>
+
+      
       {/* Stats Grid */}
       <div>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-2">
