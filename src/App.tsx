@@ -19,6 +19,7 @@ import { NewQuestPage } from './pages/quests/NewQuestPage';
 import { SkillsPage } from './pages/skills/SkillsPage';
 import { AchievementsPage } from './pages/achievements/AchievementsPage';
 import { TitlesPage } from './pages/titles/TitlesPage';
+import { ProfilePage } from './pages/profile/ProfilePage';
 
 function App() {
   const { initialize, loading } = useAuthStore();
