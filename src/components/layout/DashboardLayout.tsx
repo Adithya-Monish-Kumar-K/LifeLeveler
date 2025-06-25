@@ -158,9 +158,6 @@ export function DashboardLayout() {
         </main>
       </div>
 
-    </div>
-  );
-  
       {/* Level up modal */}
       <LevelUpModal
         show={levelUpNotification.show}
@@ -169,4 +166,7 @@ export function DashboardLayout() {
         bonusPointsAwarded={levelUpNotification.bonusPointsAwarded}
         onClose={hideLevelUp}
       />
+    </div>
+  );
+  
 }
