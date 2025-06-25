@@ -10,7 +10,7 @@ export function ProfilePage() {
     profile,
     updateUsername,
     updateEmail,
-    updatePhoto,a
+    updatePhoto,
     resetCharacter,
   } = useUserStore();
 
