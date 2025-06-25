@@ -25,9 +25,11 @@ export function ProfilePage() {
     }
   };
 
-  const handleResetConfirm = async () => {
-    await resetCharacter();
+  const handleResetConfirm = () => {
+    // Close dialog immediately
     setShowResetConfirm(false);
+    // Then perform reset
+    resetCharacter();
   };
 
   if (!profile) return <p className="text-white">Loading profile...</p>;
