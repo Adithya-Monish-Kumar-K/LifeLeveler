@@ -14,18 +14,14 @@ export function ProfilePage() {
   } = useUserStore();
 
   const [username, setUsername] = useState(profile?.name || '');
-  const [email, setEmail] = useState(profile?.email || '');
+  const [email] = useState(profile?.email || '');
+  const [isEditing, setIsEditing] = useState(false);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
 
   const handleUsernameSave = async () => {
     if (username.trim() && profile) {
       await updateUsername(username.trim());
-    }
-  };
-
-  const handleEmailSave = async () => {
-    if (email.trim() && profile) {
-      await updateEmail(email.trim());
+      setIsEditing(false);
     }
   };
 
@@ -34,46 +30,50 @@ export function ProfilePage() {
     setShowResetConfirm(false);
   };
 
-  if (!profile) return <p>Loading profile...</p>;
+  if (!profile) return <p className="text-white">Loading profile...</p>;
 
   return (
     <div className="max-w-md mx-auto space-y-6 py-8">
-      <Card className="p-6 space-y-4">
-        <h2 className="text-2xl font-bold">Profile</h2>
+      <Card className="p-6 space-y-4 bg-gray-800">
+        <h2 className="text-2xl font-bold text-white">Profile</h2>
 
         {/* Username */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium">Username</label>
+          <label className="block text-sm font-medium text-white">Username</label>
           <div className="flex gap-2">
-            <Input
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-              className="flex-1"
-            />
-            <Button size="sm" onClick={handleUsernameSave}>Save</Button>
+            {isEditing ? (
+              <Input
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+                className="flex-1"
+              />
+            ) : (
+              <p className="flex-1 text-white">{username}</p>
+            )}
+            {isEditing ? (
+              <Button size="sm" onClick={handleUsernameSave}>Save</Button>
+            ) : (
+              <Button size="sm" onClick={() => setIsEditing(true)}>Edit</Button>
+            )}
           </div>
         </div>
 
         {/* Email */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium">Email</label>
+          <label className="block text-sm font-medium text-white">Email</label>
           <div className="flex gap-2">
             <Input
               type="email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
-              className="flex-1"
+              disabled
+              className="flex-1 bg-gray-700 text-white"
             />
-            <Button size="sm" onClick={handleEmailSave}>Save</Button>
           </div>
         </div>
 
         {/* Reset Character */}
-        <div className="pt-4 border-t">
-          <Button
-            variant="destructive"
-            onClick={() => setShowResetConfirm(true)}
-          >
+        <div className="pt-4 border-t border-gray-600">
+          <Button size="sm" variant="default" onClick={() => setShowResetConfirm(true)}>
             Reset Character
           </Button>
         </div>
