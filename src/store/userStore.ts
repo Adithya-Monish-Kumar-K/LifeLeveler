@@ -350,7 +350,6 @@ export const useUserStore = create<UserState>((set, get) => ({
     await get().updateProfile({
       totalEXP: newTotalEXP,
       level: newLevel,
-      bonusStatPoints: profile.bonusStatPoints + bonusPointsAwarded,
     });
     
     // Reload data
