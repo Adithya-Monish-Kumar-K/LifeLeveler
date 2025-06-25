@@ -730,4 +730,5 @@ export const useUserStore = create<UserState>((set, get) => ({
   hideLevelUp: () => {
     set({ levelUpNotification: { show: false, oldLevel: 0, newLevel: 0, bonusPointsAwarded: 0 } });
   },
-}));
+}
+                                                            ));
