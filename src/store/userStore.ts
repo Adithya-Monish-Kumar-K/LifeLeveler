@@ -732,4 +732,9 @@ export const useUserStore = create<UserState>((set, get) => ({
   // call your generic updater
   await get().updateProfile({ name: newName });
 },
+  updateEmail: async (newEmail: string) => {
+  const { profile } = get();
+  if (!profile) return;
+  await get().updateProfile({ email: newEmail });
+},
 }));
