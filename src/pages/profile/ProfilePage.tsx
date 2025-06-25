@@ -10,14 +10,11 @@ export function ProfilePage() {
     profile,
     updateUsername,
     updateEmail,
-    updatePhoto,
     resetCharacter,
   } = useUserStore();
 
   const [username, setUsername] = useState(profile?.name || '');
   const [email, setEmail] = useState(profile?.email || '');
-  const [photoFile, setPhotoFile] = useState<File | null>(null);
-  const [photoPreview, setPhotoPreview] = useState(profile?.photoUrl || '');
   const [showResetConfirm, setShowResetConfirm] = useState(false);
 
   const handleUsernameSave = async () => {
@@ -29,21 +26,6 @@ export function ProfilePage() {
   const handleEmailSave = async () => {
     if (email.trim() && profile) {
       await updateEmail(email.trim());
-    }
-  };
-
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setPhotoFile(file);
-      setPhotoPreview(URL.createObjectURL(file));
-    }
-  };
-
-  const handlePhotoSave = async () => {
-    if (photoFile && profile) {
-      await updatePhoto(photoFile);
-      setPhotoFile(null);
     }
   };
 
