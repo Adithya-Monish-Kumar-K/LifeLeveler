@@ -364,7 +364,7 @@ export const useUserStore = create<UserState>((set, get) => ({
     
     // Show level up notification if leveled up
     if (newLevel > oldLevel) {
-      get().showLevelUp(oldLevel, newLevel, bonusPointsAwarded, newLevel);
+      get().showLevelUp(oldLevel, newLevel, bonusPointsAwarded);
     }
   },
 
