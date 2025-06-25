@@ -101,6 +101,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
   // 2) Update your profile table
   await get().updateProfile({ email: newEmail });
-},
+  },
 
 }));
