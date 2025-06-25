@@ -53,9 +53,6 @@ interface UserState {
   // Reward actions
   setActiveTitle: (titleId: string | undefined) => Promise<void>;
   
-  // UI actions
-  showLevelUp: (oldLevel: number, newLevel: number, bonusPoints: number) => void;
-  hideLevelUp: () => void;
 }
 
 export const useUserStore = create<UserState>((set, get) => ({
