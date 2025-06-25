@@ -68,31 +68,6 @@ export function ProfilePage() {
           </div>
         </div>
 
-        {/* Photo */}
-        <div className="space-y-2">
-          <label className="block text-sm font-medium">Profile Photo</label>
-          <div className="flex items-center gap-4">
-            {photoPreview && (
-              <img
-                src={photoPreview}
-                alt="Profile"
-                className="w-16 h-16 rounded-full object-cover"
-              />
-            )}
-            <div className="flex gap-2">
-              <Input
-                type="file"
-                accept="image/*"
-                onChange={handlePhotoChange}
-                className="flex-1"
-              />
-              <Button size="sm" onClick={handlePhotoSave} disabled={!photoFile}>
-                Upload
-              </Button>
-            </div>
-          </div>
-        </div>
-
         {/* Reset Character */}
         <div className="pt-4 border-t">
           <Button
