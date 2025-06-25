@@ -166,6 +166,8 @@ export const useUserStore = create<UserState>((set, get) => ({
     if (!profile) return;
     
     const dbUpdates: any = {};
+    if (updates.name !== undefined)  dbUpdates.name  = updates.name;
+    if (updates.email !== undefined) dbUpdates.email = updates.email;
     if (updates.totalEXP !== undefined) dbUpdates.total_exp = updates.totalEXP;
     if (updates.level !== undefined) dbUpdates.level = updates.level;
     if (updates.bonusStatPoints !== undefined) dbUpdates.bonus_stat_points = updates.bonusStatPoints;
