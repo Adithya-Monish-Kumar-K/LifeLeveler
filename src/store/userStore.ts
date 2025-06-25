@@ -737,55 +737,62 @@ export const useUserStore = create<UserState>((set, get) => ({
   if (!profile) return;
   await get().updateProfile({ email: newEmail });
 },
-  resetCharacter: async () => {
+  resetCharacter: async (): Promise<void> => {
   const { profile } = get();
   if (!profile) return;
 
   const userId = profile.id;
 
-  // 1) Delete all quest rewards first (foreign‐key references)
-  await supabase
-    .from('quest_rewards')
-    .delete()
+  // 1) Load all quest IDs for this user
+  const { data: userQuests, error: questLoadError } = await supabase
+    .from<{ id: string }>('quests')
+    .select('id')
     .eq('user_id', userId);
 
-  // 2) Delete all quests
-  await supabase
+  if (questLoadError) {
+    console.error('Error loading quests for reset:', questLoadError);
+    return;
+  }
+
+  const questIds: string[] = (userQuests ?? []).map(q => q.id);
+
+  // 2) Delete all quest_rewards for those quests
+  if (questIds.length > 0) {
+    const { error: rewardDeleteError } = await supabase
+      .from('quest_rewards')
+      .delete()
+      .in('quest_id', questIds);
+
+    if (rewardDeleteError) {
+      console.error('Error deleting quest rewards:', rewardDeleteError);
+      return;
+    }
+  }
+
+  // 3) Delete all quests
+  const { error: questDeleteError } = await supabase
     .from('quests')
     .delete()
     .eq('user_id', userId);
 
-  // 3) Delete all skills and their chains
-  await supabase
-    .from('skills')
-    .delete()
-    .eq('user_id', userId);
-  await supabase
-    .from('skill_chains')
-    .delete()
-    .eq('user_id', userId);
+  if (questDeleteError) {
+    console.error('Error deleting quests:', questDeleteError);
+    return;
+  }
 
-  // 4) Delete all achievements and their chains
-  await supabase
-    .from('achievements')
-    .delete()
-    .eq('user_id', userId);
-  await supabase
-    .from('achievement_chains')
-    .delete()
-    .eq('user_id', userId);
+  // 4) Delete all skills and their chains
+  await supabase.from('skills').delete().eq('user_id', userId);
+  await supabase.from('skill_chains').delete().eq('user_id', userId);
 
-  // 5) Delete all titles and their chains
-  await supabase
-    .from('titles')
-    .delete()
-    .eq('user_id', userId);
-  await supabase
-    .from('title_chains')
-    .delete()
-    .eq('user_id', userId);
+  // 5) Delete all achievements and their chains
+  await supabase.from('achievements').delete().eq('user_id', userId);
+  await supabase.from('achievement_chains').delete().eq('user_id', userId);
 
-  // 6) Reset the profile record itself
+  // 6) Delete all titles and their chains
+  await supabase.from('titles').delete().eq('user_id', userId);
+  await supabase.from('title_chains').delete().eq('user_id', userId);
+
+  // 7) Reset the profile record itself
   const resetPayload: Partial<UserProfile> = {
     totalEXP: 0,
     level: 1,
@@ -799,11 +806,11 @@ export const useUserStore = create<UserState>((set, get) => ({
       mana: 1,
     },
     activeTitleId: undefined,
-    // avatarUrl left untouched if you wish; omit to preserve existing photo
   };
   await get().updateProfile(resetPayload);
 
-  // 7) Reload all in-memory state
+  // 8) Reload all in-memory state
   await get().loadProfile(userId);
 },
+
 }));
