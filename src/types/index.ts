@@ -116,5 +116,4 @@ export interface LevelUpNotification {
   oldLevel: number;
   newLevel: number;
   bonusPointsAwarded: number;
-  hasBeenShownFor: number;
 }
